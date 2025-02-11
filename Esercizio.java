@@ -1,9 +1,5 @@
-/LEGGERE LE ISTRUZIONI NEL FILE README.md
-
-//Import di Classi Java necessarie al funzionamento del programma
 import java.util.Scanner;
 
-// Classe principale, con metodo main
 class Esercizio {
     // Il programma parte con una chiamata a main().
 
@@ -128,6 +124,27 @@ class Esercizio {
         return N2;
     }
 
+    static int EliminaDuplicatiOtt(int[] V, int N){
+        int N2;
+        int i,j;
+        
+        i = 0;
+        while(i < N-1){
+            j = i + 1;
+            while(j < N){
+                if(V[i] == V[j]){
+                    N = EliminaElementiOtt(V, N, j);
+                }else{
+                    j++;
+                }
+            }
+            i++;
+        }
+
+        N2 = N;
+        return N2;
+    }
+
     //MAIN
 
     public static void main(String args[])
@@ -145,7 +162,7 @@ class Esercizio {
         }
 
         do{
-            System.out.println("Scegli un'opzione: \n 1. Inserisci elemento \n 2. Elimina elemento \n 3. Ricerca elemento \n 4. Elimina duplicati \n 5. Visualizza vettore \n 6. Elimina Elemento Ott. \n 7. Inserisci Elemento Ott. \n 8.Esci");
+            System.out.println("Scegli un'opzione: \n 1. Inserisci elemento \n 2. Elimina elemento \n 3. Ricerca elemento \n 4. Elimina duplicati \n 5. Visualizza vettore \n 6. Elimina Elemento Ott. \n 7. Inserisci Elemento Ott. \n 8. Elimina Duplicati Ott. \n 9.Esci ");
             System.out.print("Input: ");
             o = in.nextInt();
             if(o == 1){
@@ -197,9 +214,12 @@ class Esercizio {
                 }while(i<0 || i>=N);
                 N = InserisciElementoOtt(V,N,valore,i);
             }
-            if(o < 1 || i >8){
+            if(o == 8){
+                N = EliminaDuplicatiOtt(V, N);
+            }
+            if(o < 1 || i >9){
                 System.out.println("Inserire un valore valido");
             }
-        }while(o != 8);
+        }while(o != 9);
     }
 }
